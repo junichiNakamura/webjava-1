@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<style type="text/css">
+ <!--
+  	title_text {
+ 		font-size: 42px;
+ 	}
+ -->
+ <!--
+ 	.indent {
+ 		text-indent:2em;
+ 	}
+ -->
+ </style>
+
+<title>商品一覧</title>
+</head>
+<body>
+
+	<title_text> 商品一覧 </title_text>
+	<br />
+	<br />
+
+	<form action="/cart" method="post" th:each="entry : ${data}">
+		<div>
+			[[${entry.value.name}]]
+		</div>
+		<div class="indent">
+			価格 [[${entry.value.price}]]円
+			<input type="hidden" name="itemId" th:value=${entry.value.itemId}>
+			<input type="submit" value="カートに追加" >
+		</div>
+		<br>
+	</form>
+
+</body>
+</html>
